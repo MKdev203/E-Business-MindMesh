@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Willkommen auf unserer Seite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+</head>
+<body>
+
+    <!-- Navigation -->
+    {% include 'nav.html' %}
+
+    <!-- Slogan Section -->
+    <section class="slogan">
+        <div class="background-overlay"></div>
+        <div class="slogan-content"></div>
+        <div>
+            <h1>Die Zukunft deines Business beginnt hier</h1>
+            <p>Innovative Lösungen für Unternehmen von morgen – maßgeschneiderte Ideen und Strategien, die dein Wachstum beschleunigen.</p>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro">
+        <h2>Willkommen bei uns</h2>
+        <p>Wir bieten kreative, innovative Lösungen, die dir helfen, dein Unternehmen auf das nächste Level zu bringen. Unsere Expertise erstreckt sich über verschiedene Geschäftsbereiche, in denen wir maßgeschneiderte Strategien und Lösungen anbieten.</p>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="service-box">
+            <h3>Beratung</h3>
+            <p>Strategische Beratung für dein Business. Wir helfen dir, die richtigen Entscheidungen zu treffen.</p>
+            <a href="/beratung">Mehr erfahren</a>
+        </div>
+        <div class="service-box">
+            <h3>Marketing</h3>
+            <p>Wir entwickeln effektive Marketingstrategien, die deine Zielgruppe direkt ansprechen.</p>
+            <a href="/marketing">Mehr erfahren</a>
+        </div>
+        <div class="service-box">
+            <h3>Entwicklung</h3>
+            <p>Maßgeschneiderte Softwarelösungen, die dein Unternehmen digital voranbringen.</p>
+            <a href="/entwicklung">Mehr erfahren</a>
+        </div>
+        <div class="service-box">
+            <h3>Design</h3>
+            <p>Visuelle Gestaltung, die deine Marke stärkt und deine Kunden begeistert.</p>
+            <a href="/design">Mehr erfahren</a>
+        </div>
+        <div class="service-box">
+            <h3>Produkte</h3>
+            <p>Unser KI-gestützter Chatbot optimiert deine Konzepte.</p>
+            <a href="/Produkte">Mehr erfahren</a>
+        </div>
+    </section>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Deine Website | Alle Rechte vorbehalten</p>
+    </footer>
+
+</body>
+</html>
