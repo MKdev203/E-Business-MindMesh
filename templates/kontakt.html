@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt</title>
+    <link rel="stylesheet" href="/static/kontakt.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+</head>
+
+<body>
+
+       <!-- Navigation -->
+       {% include 'nav.html' %}
+
+    <header>
+        <h1>Kontakt</h1>
+    </header>
+
+    <main>
+        <section class="contact-info">
+            <h2>Unsere Kontaktdaten</h2>
+            <div class="contact-box">
+                <p><strong>Email:</strong> <a href="mailto:kontakt@mindmash.com">info@mindmash.com</a></p>
+                <p><strong>Telefon:</strong> +49 123 456 7890</p>
+                <p><strong>Adresse:</strong> Kufsteiner Straße 25, 10825 Berlin</p>
+            </div>
+        </section>
+
+        <section class="contact-form">
+            <h2>Schreiben Sie uns</h2>
+            <p>Füllen Sie das Formular aus und wir melden uns so schnell wie möglich.</p>
+            <form onsubmit="return showNotification()">
+                <div class="input-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="message">Nachricht:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit">Absenden</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <a href="/">Zurück zur Startseite</a>
+    </footer>
+
+    <script>
+    function showNotification(event) {
+        event.preventDefault(); // Verhindert das Neuladen der Seite
+
+        // Formular zurücksetzen
+        document.querySelector("form").reset();
+
+        // Benachrichtigung erstellen
+        const notification = document.createElement('div');
+        notification.innerText = "Formular wurde erfolgreich abgesendet!";
+        notification.classList.add("notification");
+
+        document.body.appendChild(notification);
+
+        // Benachrichtigung nach 3 Sekunden ausblenden
+        setTimeout(() => {
+            notification.classList.add("fade-out");
+            setTimeout(() => notification.remove(), 500);
+        }, 3000);
+    }
+
+    // Event-Listener für das Formular
+    document.querySelector("form").addEventListener("submit", showNotification);
+</script>
+
+</body>
+
+</html>

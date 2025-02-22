@@ -1,0 +1,107 @@
+/* Allgemeine Stile */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    background-color: #f0f4f8;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, #003f5c, #2f80ed);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 28px;
+    margin-top: 60px;
+}
+
+/*Begrüßungstitel*/
+.welcome-title {
+    font-size: 2.5rem; /* Vergrößerte Schrift */
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Hauptinhalt */
+main {
+    flex: 1;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* About Section */
+.about-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.about-content h2 {
+    color: #003f5c;
+}
+
+.about-content p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Infoboxen */
+.about-boxes {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.box {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 30%;
+    min-width: 250px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.box h3 {
+    color: #2f80ed;
+    margin-bottom: 10px;
+}
+
+.box a {
+    color: #ff6600;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.box a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    background-color: #003f5c;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+footer a {
+    color: #ffa600;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

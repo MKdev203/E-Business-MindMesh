@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum</title>
+    <link rel="stylesheet" href="/static/impressum.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+</head>
+
+<body>
+
+       <!-- Navigation -->
+       {% include 'nav.html' %}
+
+    <header>
+        <h1>Impressum</h1>
+    </header>
+
+    <main>
+        <section class="impressum-content">
+            <h2>Angaben gemäß § 5 TMG</h2>
+            <br>
+            <p><strong>MindMesh</strong></p>
+            <p>Usman Ahmad & Magnus Kietzig</p>
+            <p>Kufsteiner Straße 25</p>
+            <p>10825 Berlin</p>
+            <br>
+
+            <h2>Kontakt</h2>
+            <p>Telefon: +49 123 456 7890</p>
+            <p>E-Mail: <a href="mailto:info@mindmash.com">info@mindmash.com</a></p>
+            <br>
+
+            <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+            <p>Usman Ahmad & Magnus Kietzig</p>
+            <p>Kufsteiner Straße 25, 10825 Berlin</p>
+            <br>
+
+            <h2>Haftungsausschluss</h2>
+            <p>Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.</p>
+            <br>
+
+            <h2>Urheberrecht</h2>
+            <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+        </section>
+    </main>
+
+    <footer>
+        <a href="/">Zurück zur Startseite</a>
+    </footer>
+</body>
+
+</html>

@@ -40,5 +40,17 @@ def delete_idea(idea_id):
         db.session.commit()
     return redirect(url_for('brainstorming'))
 
+@app.route('/ueber-uns')
+def ueber_uns():
+    return render_template('ueber-uns.html')
+
+@app.route('/kontakt')
+def kontakt():
+    return render_template('kontakt.html')
+
+@app.route('/impressum')
+def impressum():
+    return render_template('impressum.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
