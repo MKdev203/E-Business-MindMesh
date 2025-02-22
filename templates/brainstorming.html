@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brainstorming</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='nav.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='brainstorming.css') }}">
 </head>
 <body>
@@ -40,9 +40,14 @@
 </div>
 
 <!-- Footer -->
-<footer>
-    <p>© 2025 Deine Website | Alle Rechte vorbehalten</p>
-</footer>
+<div class="footer-container">
+    <div class="footer-top">
+        <a href="/" class="back-link">Zurück zur Startseite</a>
+    </div>
+    <div class="footer-bottom">
+        © 2025 MindMesh | Alle Rechte vorbehalten
+    </div>
+</div>
 
 </body>
 </html>

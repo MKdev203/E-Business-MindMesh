@@ -120,20 +120,38 @@ button:hover {
     to { opacity: 0; }
 }
 
-/* Footer */
-footer {
-    background-color: #003f5c;
-    color: white;
-    text-align: center;
-    padding: 15px;
+/* Container für beide Footer */
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
 }
 
-footer a {
+/* Footer: Zurück zur Startseite */
+.footer-top {
+    background-color: #003f5c;
+    color: #ffa600;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+}
+
+.footer-top .back-link {
     color: #ffa600;
     text-decoration: none;
     font-weight: bold;
 }
 
-footer a:hover {
+.footer-top .back-link:hover {
     text-decoration: underline;
+}
+
+/* Footer: Copyright Hinweis */
+.footer-bottom {
+    background-color: #003f5c;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.9rem;
+    
 }
