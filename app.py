@@ -52,5 +52,9 @@ def kontakt():
 def impressum():
     return render_template('impressum.html')
 
+@app.route('/beratung')
+def beratung():
+    return render_template('beratung.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
