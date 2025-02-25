@@ -47,18 +47,22 @@
 
     <!-- Kontaktformular -->
     <section class="contact-form">
-        <h2>Kontaktiere uns</h2>
-        <form action="/beratung-kontakt" method="POST">
-            <label for="name">Dein Name</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Deine E-Mail</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Deine Nachricht</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-
-            <button type="submit">Nachricht senden</button>
+        <h2>Schreiben Sie uns</h2>
+        <p>Füllen Sie das Formular aus und wir melden uns so schnell wie möglich.</p>
+        <form onsubmit="return showNotification()">
+            <div class="input-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="message">Nachricht:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit">Absenden</button>
         </form>
     </section>
 
@@ -71,5 +75,30 @@
         © 2025 MindMesh | Alle Rechte vorbehalten
     </div>
 </div>
+
+<script>
+    function showNotification(event) {
+        event.preventDefault(); // Verhindert das Neuladen der Seite
+
+        // Formular zurücksetzen
+        document.querySelector("form").reset();
+
+        // Benachrichtigung erstellen
+        const notification = document.createElement('div');
+        notification.innerText = "Formular wurde erfolgreich abgesendet!";
+        notification.classList.add("notification");
+
+        document.body.appendChild(notification);
+
+        // Benachrichtigung nach 3 Sekunden ausblenden
+        setTimeout(() => {
+            notification.classList.add("fade-out");
+            setTimeout(() => notification.remove(), 500);
+        }, 3000);
+    }
+
+    // Event-Listener für das Formular
+    document.querySelector("form").addEventListener("submit", showNotification);
+    </script>
 </body>
 </html>

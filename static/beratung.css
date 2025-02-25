@@ -85,6 +85,8 @@ nav ul li a:hover {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     text-align: center;
     font-size: 1.2em;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .service-box:hover {
@@ -103,46 +105,81 @@ nav ul li a:hover {
 
 /* Kontaktformular */
 .contact-form {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
     background: white;
+    padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
-.contact-form h2 {
-    text-align: center;
-    font-size: 2em;
-    margin-bottom: 20px;
+
+.input-group {
+    text-align: left;
+    margin-bottom: 15px;
 }
-.contact-form form {
-    display: flex;
-    flex-direction: column;
-}
-.contact-form label {
-    margin-top: 10px;
+
+label {
     font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
 }
-.contact-form input,
-.contact-form textarea {
+
+input, textarea {
     width: 100%;
     padding: 10px;
-    margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-.contact-form button {
-    margin-top: 15px;
-    padding: 10px;
+
+textarea {
+    resize: vertical;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
     background: #2f80ed;
     color: white;
     border: none;
+    border-radius: 8px;
     cursor: pointer;
-    border-radius: 5px;
-    font-size: 1em;
+    transition: background 0.3s ease-in-out;
 }
-.contact-form button:hover {
+
+button:hover {
     background: #0056b3;
+}
+
+/* Benachrichtigung */
+.notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #28a745;
+    color: white;
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s ease-in-out;
+    z-index: 1000;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease-in-out;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
 }
 
 /* Container für beide Footer */
