@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsere Produkte</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='service.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- Navigation -->
+    {% include 'nav.html' %}
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Unsere AI-gestützten Produkte</h1>
+        <p>Erlebe intelligente Lösungen für Design, Entwicklung, Marketing und Beratung</p>
+    </header>
+
+    <!-- Main Content -->
+    <section class="container">
+        <h2>Unser AI-gestützter Konzept-Chatbot</h2>
+        <p class="description">Unser Chatbot erstellt grobe Gliederungspunkte für Design-, Entwicklungs-, Marketing- und Beratungskonzepte.</p> <br>
+        <p class="warning"><strong>Hinweis:</strong> <br> Dies ist nur eine <strong>Demo-Version</strong> um die Funktionsweise des Chatbots zu präsentieren! <br> Für ein detailliertes und individualisiertes Konzept ist die kostenpflichtige Version erforderlich.</p> <br>
+        
+        <!-- Chatbot Demo -->
+        <div class="chat-container">
+            <div class="chat-box" id="chat-box">
+                <p class="bot-message">Willkommen! Geben Sie eines der 4 Themen (Design, Entwicklung, Marketing, Beratung) ein, zu dem Sie eine erste mögliche Gliederung wünschen.</p> <br>
+            </div>
+            <input type="text" id="user-input" placeholder="Geben Sie Ihr Thema ein...">
+            <button onclick="sendToChatbot()">Senden</button>
+
+        </div>
+    </section>
+
+<!-- Kontaktformular -->
+<section class="contact-form">
+    <h2>Schreiben Sie uns, wenn Sie an einer VOLLVERSION interessiert sind! </h2>
+    <p>Füllen Sie das Formular aus und wir melden uns so schnell wie möglich.</p>
+    <form onsubmit="return showNotification()">
+        <div class="input-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="input-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="input-group">
+            <label for="message">Nachricht:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit">Absenden</button>
+    </form>
+</section>
+
+    <!-- Footer -->
+    <div class="footer-container">
+        <div class="footer-top">
+            <a href="/" class="back-link">Zurück zur Startseite</a>
+        </div>
+        <div class="footer-bottom">
+            © 2025 MindMesh | Alle Rechte vorbehalten
+        </div>
+    </div>
+
+    <script>
+        async function sendToChatbot() {
+            let userInput = document.getElementById("user-input").value;
+            let chatBox = document.getElementById("chat-box");
+            
+            if (!userInput.trim()) {
+                return;
+            }
+            
+            // Benutzeranfrage anzeigen (rechtsbündig)
+            let userMessage = document.createElement("p");
+            userMessage.classList.add("user-message");
+            userMessage.textContent = userInput;
+            chatBox.appendChild(userMessage);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            
+            // Typing-Indikator anzeigen
+            let typingIndicator = document.createElement("p");
+            typingIndicator.classList.add("typing-indicator");
+            typingIndicator.textContent = "Der Chatbot denkt ...";
+            chatBox.appendChild(typingIndicator);
+            
+            // Anfrage an Flask-Backend senden
+            let response = await fetch("/chatbot", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ topic: userInput })
+            });
+            let data = await response.json();
+            
+            // Typing-Indikator entfernen
+            chatBox.removeChild(typingIndicator);
+            
+             // Antwort des Chatbots vorbereiten
+            let botResponse = document.createElement("div");
+            botResponse.classList.add("bot-message");
+            chatBox.appendChild(botResponse);
+
+            let text = data.response;
+            let index = 0;
+
+            // Zeichen für Zeichen Animation
+            function typeWriter() {
+                if (index < text.length) {
+                    botResponse.innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(typeWriter, 30); // Geschwindigkeit der Zeichenanzeige
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                } else {
+            // Wenn die Animation abgeschlossen ist, formatiere den Text als Liste
+                setTimeout(() => {
+                    let formattedResponse = document.createElement("div");
+                    let lines = text.split("\n");
+                    
+                    let ul; // Listenelement für Unterpunkte
+
+                lines.forEach(line => {
+                    if (/^\d+\./.test(line.trim())) {  // Hauptpunkte erkennen (1., 2., 3., 4.)
+                        let headline = document.createElement("strong");
+                        headline.textContent = line.trim();
+                        formattedResponse.appendChild(headline);
+                        ul = document.createElement("ul"); // Neue Liste für Unterpunkte
+                        formattedResponse.appendChild(ul);
+                    } else if (line.trim().startsWith("-")) {  // Unterpunkte erkennen
+                        let li = document.createElement("li");
+                        li.textContent = line.trim();
+                        if (ul) {
+                            ul.appendChild(li);
+                        } else {
+                            formattedResponse.appendChild(li);
+                        }
+                    }
+                });
+
+                botResponse.innerHTML = ""; // Lösche den bisherigen Text
+                botResponse.appendChild(formattedResponse);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 500);
+        }
+    }
+
+    typeWriter();       
+
+            chatBox.appendChild(document.createElement("hr")); // Abstand zwischen Nachrichten
+            chatBox.scrollTop = chatBox.scrollHeight;
+    
+            // Eingabefeld leeren
+            document.getElementById("user-input").value = "";
+        }
+
+        function showNotification(event) {
+            event.preventDefault(); // Verhindert das Neuladen der Seite
+    
+            // Formular zurücksetzen
+            document.querySelector("form").reset();
+    
+            // Benachrichtigung erstellen
+            const notification = document.createElement('div');
+            notification.innerText = "Formular wurde erfolgreich abgesendet!";
+            notification.classList.add("notification");
+    
+            document.body.appendChild(notification);
+    
+            // Benachrichtigung nach 3 Sekunden ausblenden
+            setTimeout(() => {
+                notification.classList.add("fade-out");
+                setTimeout(() => notification.remove(), 500);
+            }, 3000);
+        }
+    
+        // Event-Listener für das Formular
+        document.querySelector("form").addEventListener("submit", showNotification);
+        </script>
+</body>
+</html>

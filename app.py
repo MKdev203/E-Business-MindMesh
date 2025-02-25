@@ -1,5 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from chatbot import generate_concept_response
+
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 
@@ -67,6 +69,18 @@ def entwicklung():
 @app.route('/design')
 def design():
     return render_template('design.html')
+
+@app.route('/produkte')
+def produkte():
+    return render_template('produkte.html')
+
+@app.route("/chatbot", methods=["POST"])
+def chatbot_response():
+    data = request.get_json()
+    topic = data.get("topic", "").lower()
+    response = generate_concept_response(topic)
+    return jsonify({"response": response})
+
 
 if __name__ == '__main__':
     app.run(debug=True)

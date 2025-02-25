@@ -216,3 +216,49 @@ button:hover {
     padding: 10px 0;
     font-size: 0.9rem;
 }
+
+/* Chatbot: Design für den Chatbot bei Produkte */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: auto;
+}
+.chat-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    height: 300px;
+    overflow-y: auto;
+    background: #fff;
+}
+.user-message {
+    text-align: right;
+    font-weight: bold;
+    color: #2f80ed;
+    margin: 5px 0;
+}
+.bot-message {
+    text-align: left;
+    background: #f1f1f1;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.bot-message ul {
+    list-style-type: none; /* Entfernt die schwarzen Punkte */
+    padding-left: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.typing-indicator {
+    font-style: italic;
+    color: #aaa;
+    animation: blink 1s infinite;
+}
+@keyframes blink {
+    50% { opacity: 0; }
+}
