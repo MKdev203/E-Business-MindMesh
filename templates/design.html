@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marketing mit AI</title>
+    <title>AI-gestütztes Design</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='service.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
@@ -15,31 +15,31 @@
 
     <!-- Hero Section -->
     <header class="hero">
-        <h1>Marketing mit AI</h1>
-        <p>Effektive Marketingstrategien durch künstliche Intelligenz</p>
+        <h1>AI-gestütztes Design</h1>
+        <p>Kreative und innovative Designlösungen mit künstlicher Intelligenz</p>
     </header>
 
     <!-- Main Content -->
     <section class="container">
-        <h2>Unsere AI-gestützten Marketinglösungen</h2>
-        <p class="description">Wir helfen dir, dein Marketing mit innovativen AI-Technologien zu optimieren und datengetriebene Strategien zu entwickeln.</p>
+        <h2>Unsere AI-gestützten Designlösungen</h2>
+        <p class="description">Wir nutzen künstliche Intelligenz zur Erstellung ästhetischer, funktionaler und innovativer Designkonzepte.</p>
 
         <div class="services">
             <div class="service-box">
-                <h3>Automatisierte Kampagnen</h3>
-                <p>Unsere AI analysiert Markttrends und erstellt gezielte Marketingkampagnen für maximale Effizienz.</p>
+                <h3>Automatisierte Grafikdesigns</h3>
+                <p>Erstelle beeindruckende Designs mit AI-gestützten Tools, die Kreativität und Effizienz kombinieren.</p>
             </div>
             <div class="service-box">
-                <h3>Personalisierung mit AI</h3>
-                <p>Optimierte Kundenansprache durch personalisierte Inhalte basierend auf AI-Analysen.</p>
+                <h3>KI-gestützte UI/UX Optimierung</h3>
+                <p>Verbessere Nutzererlebnisse durch intelligente Analyse von Verhaltensmustern und Designvorschläge.</p>
             </div>
             <div class="service-box">
-                <h3>Chatbots & Kundeninteraktion</h3>
-                <p>Verbessere dein Kundenservice mit AI-gesteuerten Chatbots, die rund um die Uhr verfügbar sind.</p>
+                <h3>Branding mit AI</h3>
+                <p>Setze AI ein, um Markenidentitäten zu erstellen, die optimal auf deine Zielgruppe abgestimmt sind.</p>
             </div>
             <div class="service-box">
-                <h3>Datengetriebene Insights</h3>
-                <p>Nutze AI-gestützte Analysen für fundierte Marketingentscheidungen und optimierte ROI.</p>
+                <h3>Automatisierte Prototypenentwicklung</h3>
+                <p>Nutze AI für die schnelle Erstellung und Optimierung interaktiver Prototypen.</p>
             </div>
         </div>
     </section>
@@ -48,7 +48,7 @@
     <section class="contact-form">
         <h2>Schreiben Sie uns</h2>
         <p>Füllen Sie das Formular aus und wir melden uns so schnell wie möglich.</p>
-        <form onsubmit="return showNotification()">
+        <form onsubmit="return showNotification(event)">
             <div class="input-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
@@ -76,28 +76,28 @@
     </div>
 
     <script>
-        function showNotification(event) {
-            event.preventDefault(); // Verhindert das Neuladen der Seite
-    
-            // Formular zurücksetzen
-            document.querySelector("form").reset();
-    
-            // Benachrichtigung erstellen
-            const notification = document.createElement('div');
-            notification.innerText = "Formular wurde erfolgreich abgesendet!";
-            notification.classList.add("notification");
-    
-            document.body.appendChild(notification);
-    
-            // Benachrichtigung nach 3 Sekunden ausblenden
-            setTimeout(() => {
-                notification.classList.add("fade-out");
-                setTimeout(() => notification.remove(), 500);
-            }, 3000);
-        }
-    
-        // Event-Listener für das Formular
-        document.querySelector("form").addEventListener("submit", showNotification);
-        </script>
+    function showNotification(event) {
+        event.preventDefault(); // Verhindert das Neuladen der Seite
+
+        // Formular zurücksetzen
+        document.querySelector("form").reset();
+
+        // Benachrichtigung erstellen
+        const notification = document.createElement('div');
+        notification.innerText = "Formular wurde erfolgreich abgesendet!";
+        notification.classList.add("notification");
+
+        document.body.appendChild(notification);
+
+        // Benachrichtigung nach 3 Sekunden ausblenden
+        setTimeout(() => {
+            notification.classList.add("fade-out");
+            setTimeout(() => notification.remove(), 500);
+        }, 3000);
+    }
+
+    // Event-Listener für das Formular
+    document.querySelector("form").addEventListener("submit", showNotification);
+    </script>
 </body>
 </html>
