@@ -56,5 +56,9 @@ def impressum():
 def beratung():
     return render_template('beratung.html')
 
+@app.route('/marketing')
+def marketing():
+    return render_template('marketing.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
