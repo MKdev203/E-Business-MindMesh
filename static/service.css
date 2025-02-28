@@ -87,6 +87,8 @@ nav ul li a:hover {
     font-size: 1.2em;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    hyphens: auto;
+    word-break: break-word;
 }
 
 .service-box:hover {
